@@ -35,7 +35,7 @@ pushd $mediapipe_dir || exit
 pip install -r requirements.txt
 
 # apply patches
-git apply "$patches_dir/fix-arm.patch"
+git apply "$patches_dir/build.patch"
 git apply "$patches_dir/setup.patch"
 git apply "$patches_dir/workspace.patch"
 
