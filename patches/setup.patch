@@ -1,0 +1,25 @@
+diff --git a/setup.py b/setup.py
+index a0368d5..b683b60 100644
+--- a/setup.py
++++ b/setup.py
+@@ -332,6 +332,8 @@ class BuildPy(build_py.build_py):
+     build_py.build_py.finalize_options(self)
+ 
+   def run(self):
++    self.link_opencv = True
++
+     _modify_opencv_cmake_rule(self.link_opencv)
+     build_binary_graphs_obj = self.distribution.get_command_obj(
+         'build_binary_graphs')
+@@ -416,9 +418,9 @@ class RemoveGenerated(setuptools.Command):
+ 
+ 
+ setuptools.setup(
+-    name='mediapipe',
++    name='mediapipe-arm',
+     version=__version__,
+-    url='https://github.com/google/mediapipe',
++    url='https://github.com/cansik/mediapipe-arm',
+     description='MediaPipe is the simplest way for researchers and developers to build world-class ML solutions and applications for mobile, edge, cloud and the web.',
+     author='The MediaPipe Authors',
+     author_email='mediapipe@google.com',

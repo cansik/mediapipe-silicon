@@ -1,0 +1,28 @@
+diff --git a/mediapipe/BUILD b/mediapipe/BUILD
+index 1171ea6..72e4208 100644
+--- a/mediapipe/BUILD
++++ b/mediapipe/BUILD
+@@ -74,6 +74,7 @@ alias(
+     name = "macos",
+     actual = select({
+         ":macos_i386": ":macos_i386",
++        ":macos_arm64": ":macos_arm64",
+         ":macos_x86_64": ":macos_x86_64",
+         "//conditions:default": ":macos_i386",  # Arbitrarily chosen from above.
+     }),
+@@ -110,6 +111,15 @@ config_setting(
+     visibility = ["//visibility:public"],
+ )
+
++config_setting(
++    name = "macos_arm64",
++    values = {
++        "apple_platform_type": "macos",
++        "cpu": "darwin_arm64",
++    },
++    visibility = ["//visibility:public"],
++)
++
+ config_setting(
+     name = "macos_x86_64",
+     values = {

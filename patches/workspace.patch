@@ -1,0 +1,13 @@
+diff --git a/WORKSPACE b/WORKSPACE
+index 6331690..2e11c9e 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -201,7 +201,7 @@ new_local_repository(
+ new_local_repository(
+     name = "macos_opencv",
+     build_file = "@//third_party:opencv_macos.BUILD",
+-    path = "/usr/local/opt/opencv@3",
++    path = "/opt/homebrew/opt/opencv@3/",
+ )
+ 
+ new_local_repository(
