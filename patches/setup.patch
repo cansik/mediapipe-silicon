@@ -1,7 +1,16 @@
 diff --git a/setup.py b/setup.py
-index a0368d5..b683b60 100644
+index a0368d5..6e6feae 100644
 --- a/setup.py
 +++ b/setup.py
+@@ -29,7 +29,7 @@ import setuptools.command.build_ext as build_ext
+ import setuptools.command.build_py as build_py
+ import setuptools.command.install as install
+ 
+-__version__ = 'dev'
++__version__ = '0.8.9'
+ IS_WINDOWS = (platform.system() == 'Windows')
+ MP_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+ MP_DIR_INIT_PY = os.path.join(MP_ROOT_PATH, 'mediapipe/__init__.py')
 @@ -332,6 +332,8 @@ class BuildPy(build_py.build_py):
      build_py.build_py.finalize_options(self)
  
@@ -16,10 +25,10 @@ index a0368d5..b683b60 100644
  
  setuptools.setup(
 -    name='mediapipe',
-+    name='mediapipe-arm',
++    name='mediapipe-silicon',
      version=__version__,
 -    url='https://github.com/google/mediapipe',
-+    url='https://github.com/cansik/mediapipe-arm',
++    url='https://github.com/cansik/mediapipe-silicon',
      description='MediaPipe is the simplest way for researchers and developers to build world-class ML solutions and applications for mobile, edge, cloud and the web.',
      author='The MediaPipe Authors',
      author_email='mediapipe@google.com',
