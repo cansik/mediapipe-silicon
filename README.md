@@ -1,5 +1,5 @@
 #  [MediaPipe](https://github.com/google/mediapipe) for Apple Silicon
-Prebuilt Google MediaPipe packages for Apple Silicon (`arm64`.
+Prebuilt Google MediaPipe packages for Apple Silicon (`arm64`).
 
 ## Install
 To install the prebuilt packages, use the following command. The package is called **mediapipe-silicon** but is a drop-in-replacement for the mediapipe package.
