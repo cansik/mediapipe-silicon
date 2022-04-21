@@ -4,6 +4,12 @@
 # brew install wget cmake protobuf bazelisk opencv@3
 # brew uninstall --ignore-dependencies glog
 
+# prepare opencv
+export PATH="/opt/homebrew/opt/opencv@3/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/opencv@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/opencv@3/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv@3/lib/pkgconfig"
+
 pip install wheel
 pip install six
 
