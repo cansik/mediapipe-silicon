@@ -8,6 +8,13 @@ To install the prebuilt packages, use the following command. The package is call
 pip install mediapipe-silicon --find-links https://github.com/cansik/mediapipe-silicon/releases/tag/v0.8.9
 ```
 
+### Requirements.txt
+To use this library version in a `requirements.txt` it is recommended to use the following structure.
+
+```
+mediapipe-silicon; platform_system == "Darwin" and platform.machine == 'arm64'
+```
+
 ## Build
 To build the libraries yourself, please first install the following dependencies and run the build script.
 
