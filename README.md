@@ -1,11 +1,13 @@
 #  [MediaPipe](https://github.com/google/mediapipe) for Apple Silicon
+[![PyPI](https://img.shields.io/pypi/v/mediapipe-silicon)](https://pypi.org/project/mediapipe-silicon/)
+
 Prebuilt Google MediaPipe packages for Apple Silicon (`arm64`).
 
 ## Install
-To install the prebuilt packages, use the following command. The package is called **mediapipe-silicon** but is a drop-in-replacement for the mediapipe package.
+To install the prebuilt packages, use the following command to install from [PyPi](https://pypi.org/project/mediapipe-silicon/). The package is called **mediapipe-silicon** but is a drop-in-replacement for the mediapipe package.
 
 ```
-pip install mediapipe-silicon --find-links https://github.com/cansik/mediapipe-silicon/releases/tag/v0.8.9
+pip install mediapipe-silicon
 ```
 
 ### Requirements.txt
