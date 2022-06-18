@@ -10,6 +10,12 @@ To install the prebuilt packages, use the following command to install from [PyP
 pip install mediapipe-silicon
 ```
 
+As mentioned in https://github.com/cansik/mediapipe-silicon/issues/1 maybe it is necessary to limit the `protobuf` version, because the most recent one is not compatible:
+
+```
+pip install protobuf<=3.20.1
+```
+
 ### Requirements.txt
 To use this library version in a `requirements.txt` it is recommended to use the following structure.
 
