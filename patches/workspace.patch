@@ -1,13 +1,20 @@
 diff --git a/WORKSPACE b/WORKSPACE
-index 6331690..2e11c9e 100644
+index e85e34d..c6452fb 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
-@@ -201,7 +201,7 @@ new_local_repository(
+@@ -205,13 +205,13 @@ new_local_repository(
+     # For local MacOS builds, the path should point to an opencv@3 installation.
+     # If you edit the path here, you will also need to update the corresponding
+     # prefix in "opencv_macos.BUILD".
+-    path = "/usr/local",
++    path = "/opt/homebrew/",
+ )
+
  new_local_repository(
-     name = "macos_opencv",
-     build_file = "@//third_party:opencv_macos.BUILD",
--    path = "/usr/local/opt/opencv@3",
-+    path = "/opt/homebrew/opt/opencv@3/",
+     name = "macos_ffmpeg",
+     build_file = "@//third_party:ffmpeg_macos.BUILD",
+-    path = "/usr/local/opt/ffmpeg",
++    path = "/opt/homebrew/opt/ffmpeg",
  )
  
  new_local_repository(
