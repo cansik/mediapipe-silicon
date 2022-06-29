@@ -13,7 +13,7 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv@3/lib/pkgconfig"
 pip install wheel
 pip install six
 
-mediapipe_tag="v0.8.10"
+mediapipe_tag="v0.8.10.1"
 mediapipe_dir="mediapipe"
 
 # cleanup
@@ -35,7 +35,7 @@ pushd $mediapipe_dir || exit
 pip install -r requirements.txt
 
 # apply patches
-git apply "$patches_dir/bazel.patch"
+# git apply "$patches_dir/bazel.patch"
 git apply "$patches_dir/setup.patch"
 git apply "$patches_dir/workspace.patch"
 
