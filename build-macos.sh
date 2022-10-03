@@ -13,7 +13,7 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv@3/lib/pkgconfig"
 pip install wheel
 pip install six
 
-mediapipe_tag="v0.8.10.1"
+mediapipe_tag="v0.8.11"
 mediapipe_dir="mediapipe"
 
 # cleanup

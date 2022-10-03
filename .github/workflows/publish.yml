@@ -6,7 +6,7 @@ on:
       tag:
         description: 'Version Tag'
         required: false
-        default: 'v0.8.10.1'
+        default: 'v0.8.11'
 
 
 jobs:
