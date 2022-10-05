@@ -32,6 +32,12 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+
+      - name: Pre Install
+        run: |
+          echo "creating link for homebrew"
+          ln -s /usr/local/ /opt/homebrew
+          ls /opt/homebrew/
       
       # install prerequisites
       - name: Preqrequisites
@@ -49,10 +55,6 @@ jobs:
           export LDFLAGS="-L/usr/local/opt/opencv@3/lib"
           export CPPFLAGS="-I/usr/local/opt/opencv@3/include"
           export PKG_CONFIG_PATH="/usr/local/opt/opencv@3/lib/pkgconfig"
-
-          echo "creating link for homebrew"
-          ln -s /usr/local/ /opt/homebrew/
-          ls /opt/homebrew/
 
           bash build-macos.sh --ci
           ls -la dist
