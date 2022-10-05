@@ -5,10 +5,13 @@
 # brew uninstall --ignore-dependencies glog
 
 # prepare opencv
-export PATH="/opt/homebrew/opt/opencv@3/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/opencv@3/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/opencv@3/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv@3/lib/pkgconfig"
+if [ "$1" != "--ci" ]; then
+	echo "setting environment variables"
+	export PATH="/opt/homebrew/opt/opencv@3/bin:$PATH"
+	export LDFLAGS="-L/opt/homebrew/opt/opencv@3/lib"
+	export CPPFLAGS="-I/opt/homebrew/opt/opencv@3/include"
+	export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv@3/lib/pkgconfig"
+fi
 
 pip install wheel
 pip install six
