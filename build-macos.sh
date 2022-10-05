@@ -41,7 +41,7 @@ git apply "$patches_dir/workspace.patch"
 
 # build
 python setup.py gen_protos
-python setup.py bdist_wheel
+python setup.py bdist_wheel --plat-name macosx-12.0-arm64
 
 pushd dist || exit
 

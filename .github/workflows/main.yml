@@ -1,0 +1,61 @@
+name: MacOSX Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Version Tag'
+        required: false
+        default: 'v0.8.11'
+      label:
+        description: 'Additional label for release'
+        required: false
+        default: ''
+      prerelease:
+        description: 'Mark Release as Pre-Release'
+        required: false
+        default: 'false'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ 'macos-12' ]
+        python-version: [ '3.9' ]
+  
+    runs-on: ${{ matrix.os }}
+
+    name: ${{ github.event.inputs.tag }} python ${{ matrix.python-version }} on ${{ matrix.os }}
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      
+      # install prerequisites
+      - name: Preqrequisites
+        run: |
+          brew install cmake libusb pkg-config openssl
+          brew install bazelisk
+          brew install opencv@3
+      # run build command
+      - name: Build mediapipe-silicon
+        run: |
+          echo $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE
+          bash build-macos.sh
+          ls -la dist
+          
+      # upload dist
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dist/*
+          tag: "${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
+          release_name: "mediapipe-silicon ${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
+          body: "Prebuilt mediapipe-silicon wheel packages for MacOS Apple Silicon."
+          overwrite: true
+          file_glob: true
+          prerelease: ${{ github.event.inputs.prerelease }}
