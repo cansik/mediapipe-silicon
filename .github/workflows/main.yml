@@ -36,9 +36,8 @@ jobs:
       # install prerequisites
       - name: Preqrequisites
         run: |
-          brew install cmake libusb pkg-config openssl
-          brew install bazelisk
-          brew install opencv@3
+          brew install wget cmake protobuf bazelisk opencv@3
+          brew uninstall --ignore-dependencies glog
       # run build command
       - name: Build mediapipe-silicon
         run: |
