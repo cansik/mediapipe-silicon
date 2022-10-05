@@ -50,6 +50,10 @@ jobs:
           export CPPFLAGS="-I/usr/local/opt/opencv@3/include"
           export PKG_CONFIG_PATH="/usr/local/opt/opencv@3/lib/pkgconfig"
 
+          echo "creating link for homebrew"
+          ln -s /usr/local/ /opt/homebrew/
+          ls /opt/homebrew/
+
           bash build-macos.sh --ci
           ls -la dist
           
