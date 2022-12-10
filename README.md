@@ -12,15 +12,17 @@ pip install mediapipe-silicon
 
 As mentioned in https://github.com/cansik/mediapipe-silicon/issues/1 maybe it is necessary to limit the `protobuf` version, because the most recent one is not compatible:
 
-```
-pip install protobuf<=3.20.1
+```bash
+pip install "protobuf>=3.11,<4"
 ```
 
 ### Requirements.txt
-To use this library version in a `requirements.txt` it is recommended to use the following structure.
+To use mediapipe in a `requirements.txt` it is recommended to use the following structure. This will install either `mediapipe` or `mediapipe-silicon`.
 
 ```
-mediapipe-silicon; platform_system == "Darwin" and platform.machine == 'arm64'
+mediapipe; platform_system != "Darwin" or platform.machine != "arm64"
+mediapipe-silicon; platform_system == "Darwin" and platform.machine == "arm64"
+protobuf>=3.11,<4
 ```
 
 ## Build
