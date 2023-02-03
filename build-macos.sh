@@ -16,7 +16,7 @@ fi
 pip install wheel
 pip install six
 
-mediapipe_tag="v0.8.11"
+mediapipe_tag="v0.9.1"
 mediapipe_dir="mediapipe"
 
 # cleanup
@@ -38,7 +38,7 @@ pushd $mediapipe_dir || exit
 pip install -r requirements.txt
 
 # apply patches
-# git apply "$patches_dir/bazel.patch"
+echo "applying patches..."
 git apply "$patches_dir/setup.patch"
 git apply "$patches_dir/workspace.patch"
 
