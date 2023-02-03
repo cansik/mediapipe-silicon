@@ -40,4 +40,4 @@ brew uninstall --ignore-dependencies glog
 The pre-built wheel packages should be in the `dist` directory.
 
 ## About
-MIT License - Copyright (c) 2022 Florian Bruggisser
+MIT License - Copyright (c) 2023 Florian Bruggisser
