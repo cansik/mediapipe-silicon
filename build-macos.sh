@@ -40,7 +40,10 @@ pip install -r requirements.txt
 # apply patches
 echo "applying patches..."
 git apply "$patches_dir/setup.patch"
-git apply "$patches_dir/workspace.patch"
+
+if [ "$1" != "--ci" ]; then
+  git apply "$patches_dir/workspace.patch"
+fi
 
 # build
 python setup.py gen_protos
