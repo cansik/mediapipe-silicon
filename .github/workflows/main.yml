@@ -44,6 +44,7 @@ jobs:
         run: |
           brew install wget cmake protobuf bazelisk opencv@3
           brew uninstall --ignore-dependencies glog
+
       # run build command
       - name: Build mediapipe-silicon
         run: |
