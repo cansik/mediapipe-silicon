@@ -16,7 +16,7 @@ fi
 pip install wheel
 pip install six
 
-mediapipe_tag="v0.9.1"
+mediapipe_tag="0.9.2.1"
 mediapipe_dir="mediapipe"
 
 # cleanup
