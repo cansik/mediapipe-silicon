@@ -3,3 +3,4 @@ venv*
 mediapipe
 dist
 .DS_Store
+build/
