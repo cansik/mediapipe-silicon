@@ -36,7 +36,7 @@ brew uninstall --ignore-dependencies glog
 The build script is written in powershell:
 
 ```
-pwsh tools/multi-build.ps1
+pwsh tools/build.ps1
 ```
 
 The pre-built wheel packages should be in the `dist` directory.
