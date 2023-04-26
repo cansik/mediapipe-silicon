@@ -8,7 +8,8 @@ param(
     [string]$MediaPipeRepository = "https://github.com/google/mediapipe.git",
     [string]$MediaPipeBranch = "v0.9.2.1",
     [switch]$SkipRepositorySetup = $False,
-    [switch]$OnlyInstallDependencies = $False
+    [switch]$OnlyInstallDependencies = $False,
+    [switch]$Clean = $False
 )
 
 function Replace-In-File([string]$InputFile, $Tokens)
@@ -28,14 +29,16 @@ function Try-Resolve-Path([string]$Path)
     return $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($Path)
 }
 
-function Create-Dir-If-Needed([string]$Path) {
+function Create-Dir-If-Needed([string]$Path)
+{
     if (!(Test-Path $Path))
     {
         New-Item -Path $Path -ItemType Directory
     }
 }
 
-function Find-File-Or-Exit([string]$Path, [string]$ErrorMessage = "") {
+function Find-File-Or-Exit([string]$Path, [string]$ErrorMessage = "")
+{
     [array]$files = Get-ChildItem $Path
     if ($files.Length -eq 0)
     {
@@ -56,6 +59,7 @@ $IsMacOSArm64 = $IsMacOS -And ($( arch ) -eq "arm64")
 $LinkOpenCV = $False
 
 Write-Host -ForegroundColor Blue "Mediapipe Build Script"
+Write-Host -ForegroundColor Blue "Python version: $(python --version)"
 Write-Host -ForegroundColor Blue "building $PackageName in $BuildPath..."
 
 # install os specific pre-requisites and set path
@@ -69,7 +73,11 @@ if (-Not$SkipRepositorySetup)
 {
     if (Test-Path $BuildPath)
     {
-        Write-Host "Removing directory $BuildPath"
+        Push-Location $BuildPath
+        Write-Host -ForegroundColor Yellow "Cleaning bazel..."
+        bazel clean
+        Pop-Location
+
         Remove-Item -Recurse -Force -Path $BuildPath
     }
 }
@@ -91,7 +99,9 @@ if ($IsMacOS)
     if ($IsMacOSArm64)
     {
         $BDistPlatformName = "macosx-12_0-arm64"
-    } else {
+    }
+    else
+    {
         $BDistPlatformName = "macosx_12_0_x86_64"
     }
 
@@ -128,7 +138,8 @@ elseif ($IsLinux)
     pip install auditwheel
 }
 
-if ($OnlyInstallDependencies) {
+if ($OnlyInstallDependencies)
+{
     Write-Host -ForegroundColor Blue "Installed dependencies only. Now exiting build script!"
     exit 0
 }
@@ -141,6 +152,12 @@ if (-Not$SkipRepositorySetup)
 }
 
 Push-Location $BuildPath
+
+if ($Clean)
+{
+    Write-Host -ForegroundColor Yellow "Cleaning bazel..."
+    bazel clean
+}
 
 # install pre-requisites
 pip install wheel

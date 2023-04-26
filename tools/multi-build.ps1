@@ -1,5 +1,5 @@
 param(
-    [String]$VenvPath = "./venv_build",
+    [String]$VenvPath = "./venv-build",
     [Parameter(ValueFromRemainingArguments = $true)][String[]]$PythonExecutables = @("python3.8", "python3.9", "python3.10", "python3.11")
 )
 
@@ -29,14 +29,17 @@ function Deactivate-Venv()
 foreach ($PythonExec in $PythonExecutables)
 {
     Write-Host -ForegroundColor Blue "building for $PythonExec..."
+    Write-Host ""
 
-    & $PythonExec -m venv $VenvPath
-    Activate-Venv $VenvPath
+    $PathPythonName = $PythonExec.Replace(".", "")
+    $CurrentVenvPath = "$VenvPath-$PathPythonName"
+    & $PythonExec -m venv $CurrentVenvPath
+    Activate-Venv $CurrentVenvPath
 
     & "tools/build.ps1"
 
-    deactivate
-    Remove-Item -Force -Recurse $VenvPath
+    Deactivate-Venv
+    Remove-Item -Force -Recurse $CurrentVenvPath
 }
 
 Write-Host -ForegroundColor Blue "Done!"

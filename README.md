@@ -29,12 +29,14 @@ protobuf>=3.11,<4
 To build the libraries yourself, please first install the following dependencies and run the build script.
 
 ```
-brew install wget cmake protobuf bazelisk opencv@3
+brew install wget cmake protobuf bazelisk opencv@3 powershell
 brew uninstall --ignore-dependencies glog
 ```
 
+The build script is written in powershell:
+
 ```
-./build-macos.sh
+pwsh tools/multi-build.ps1
 ```
 
 The pre-built wheel packages should be in the `dist` directory.
