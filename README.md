@@ -3,6 +3,8 @@
 
 Prebuilt Google MediaPipe packages for Apple Silicon (`arm64`).
 
+🥳 The official [MediaPipe 0.9.3.0](https://pypi.org/project/mediapipe/0.9.3.0/) now builds universal2 pip wheels for OSX. This means, `arm64` is now officially supported!
+
 ## Install
 To install the prebuilt packages, use the following command to install from [PyPi](https://pypi.org/project/mediapipe-silicon/). The package is called **mediapipe-silicon** but is a drop-in-replacement for the mediapipe package.
 
